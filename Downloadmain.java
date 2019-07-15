@@ -16,7 +16,11 @@ public class Downloadmain{
 		String targetFilename;
 
 		do {
-			try { //CHECKS THE URL		
+
+			// This checks the url to get the download from
+			// A try and catch statement are partnered together to prevent crashing of the program
+			// when an error is presented.
+			try {
 				
 				System.out.println("URL to download? "); //ASK URL
 				urlString = console.nextLine(); //INPUT URL
@@ -26,28 +30,26 @@ public class Downloadmain{
 					targetFilename = console.nextLine(); //INPUT FILENAME
 					File fileName = new File(targetFilename);
 					fileName.getPath();
-				
-				} catch (MalformedURLException e){
+			} catch (MalformedURLException e){
 				System.out.println("Bad URL! Try again: ");	//THROWS MALFORMED URL EXCEPTION
 				e.printStackTrace();
-				}
-			
-//			try {
-//				System.out.println("Target file name: "); //ASK FILENAME
-//				targetFilename = console.nextLine(); //INPUT FILENAME
-//				File fileName = new File(targetFilename);
-//				fileName.getPath();
-				
-			 catch (IOException e) {
-				System.out.println(" I/O error: " + e.getMessage()); //THROWS IO EXCEPTION
-				e.printStackTrace();
 			}
-		}while (url == null);
+			
+			// try {
+			// 	System.out.println("Target file name: "); //ASK FILENAME
+			// 	targetFilename = console.nextLine(); //INPUT FILENAME
+			// 	File fileName = new File(targetFilename);
+			// 	fileName.getPath();
+			// } catch (IOException e) {
+			// 	System.out.println(" I/O error: " + e.getMessage()); //THROWS IO EXCEPTION
+			// 	e.printStackTrace();
+			// }
+		} while (url == null);
 			console.close();
 		}
-			public static void saveFileFromUrlWithCommonsIO(String targetFilename,
-			String urlString) throws MalformedURLException, IOException {
-			FileUtils.copyURLToFile(new URL(urlString), new File(targetFilename));
-			
+
+		public static void saveFileFromUrlWithCommonsIO(String targetFilename,
+		String urlString) throws MalformedURLException, IOException {
+		FileUtils.copyURLToFile(new URL(urlString), new File(targetFilename));
 	}
 }
